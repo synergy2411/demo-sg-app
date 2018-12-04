@@ -1,8 +1,12 @@
 <div class="container">
 <ul class="list-unstyled">
-<li class="well" *ngFor="let user of users">
+<li class="well" *ngFor="let user of users; index as i; first as isFirst; even as isEven; odd as isOdd; last as isLast;">
     <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-3">
+            <!-- {{ i }}
+            <br>
+            is this First? {{ isFirst }}
+            is this Last? {{ isLast }} -->
             <!-- <img [src]="user.image" class="img-responsive"> <br>
             <button class="btn btn-info btn-sm" (click)="moreInfo(user)">
                 More Info
