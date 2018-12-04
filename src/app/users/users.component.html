@@ -1,0 +1,32 @@
+<div class="container">
+<ul class="list-unstyled">
+<li class="well">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <!-- <img [src]="user.image" class="img-responsive"> <br>
+            <button class="btn btn-info btn-sm" (click)="moreInfo(user)">
+                More Info
+            </button> -->
+            <app-user-image 
+                [user]="user"
+                (childEvent)="moreInfo($event)"></app-user-image>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-9">
+            <app-user-info [user] = "user">
+                <p>This is Sample Data.</p>
+                <p class="mydata">This is Sample Data 2.</p>
+                <header>This is header.</header>
+
+            </app-user-info>
+            <!-- <h2> {{ user.firstName }} {{ user.lastName }}</h2>
+            <p>Income : <span [innerHTML]="user.income"></span></p>
+            <p>Date of Birth : {{ user.dob }}</p>
+            <p>Total Votes : {{ user.votes }}
+                <input type="number" [value]="user.votes" (change)="user.votes = $event.target.value" />
+                <input type="number" [(ngModel)]="user.votes">
+            </p> -->
+        </div>
+    </div>
+</li>
+</ul>
+</div>
