@@ -3,14 +3,19 @@
     Login Form
   </h1>
 </div>
-<form class="well">
+<form class="well" (ngSubmit)="login(f)" #f = "ngForm">
   <div class="form-group">
     <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-3">
         <label for="username">Username : </label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-8">
-        <input type="text" name="username" class="form-control">
+        <input type="text" 
+          name="username" 
+          class="form-control" 
+          ngModel
+          required
+          minlength="6">
       </div>
     </div>
   </div>
@@ -20,9 +25,17 @@
         <label for="password">Password : </label>
       </div>
       <div class="col-md-8 col-sm-8 col-xs-8">
-        <input type="password" name="password" class="form-control">
+        <input type="password" 
+          name="password" 
+          class="form-control" 
+          ngModel
+          required>
       </div>
     </div>
   </div>
-  <input type="submit" class="btn btn-primary btn-block" value="Login">
+  <input type="submit" 
+    class="btn btn-primary btn-block" 
+    value="Login"
+    [disabled]="!f.valid">
+  <p>Form State : {{ f.valid }}</p>
 </form>
