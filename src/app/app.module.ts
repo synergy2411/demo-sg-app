@@ -13,7 +13,9 @@ import { LifeCycleDemoComponent } from './life-cycle-demo/life-cycle-demo.compon
   declarations: [
     AppComponent, 
     UsersComponent, 
-    UserImageComponent, UserInfoComponent, LifeCycleDemoComponent
+    UserImageComponent, 
+    UserInfoComponent, 
+    LifeCycleDemoComponent
   ],
   imports: [
     BrowserModule,

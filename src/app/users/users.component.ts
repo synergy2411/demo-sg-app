@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { IUser } from '../model/user';
 import { USER_DATA } from '../data/mocks';
  
@@ -14,9 +14,17 @@ import { USER_DATA } from '../data/mocks';
     styleUrls: ['./user.component.css'],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
 
-    user: IUser;
+    users: IUser[];
+
+    constructor(){
+        // this.user = USER_DATA;
+    }
+
+    ngOnInit(){
+        this.users = USER_DATA;
+    }
 
     moreInfo(user: IUser) {
         // console.log(user);

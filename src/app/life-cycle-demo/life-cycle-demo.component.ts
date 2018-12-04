@@ -8,7 +8,8 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnDestroy,
-  Input
+  Input,
+  SimpleChanges
 } from '@angular/core';
 
 @Component({
@@ -28,10 +29,12 @@ export class LifeCycleDemoComponent implements
 
   @Input('title') title: string;
 
-  constructor() { }
+  constructor() { console.log("constructor")}
 
   ngOnInit() { console.log("ngOnInit"); }
-  ngOnChanges() { console.log("ngOnChanges"); }
+  ngOnChanges(changes : SimpleChanges) { 
+    console.log("ngOnChanges", changes); 
+  }
   ngDoCheck() { console.log("ngDoCheck"); }
   ngAfterContentInit() { console.log("ngAfterContentInit"); }
   ngAfterContentChecked() { console.log("ngAfterContentChecked"); }
