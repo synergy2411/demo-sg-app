@@ -1,0 +1,15 @@
+<h4>
+  <!-- Observable Data : {{ data | async}} -->
+  <!-- New Data : {{ obsData }} -->
+</h4>
+
+<ul>
+  <li *ngFor="let data of obsData">
+    {{data}}
+  </li>
+</ul>
+
+<button class="btn btn-default" 
+  (click)="onUnsubscribe()">Unsubscribe</button>
+
+<button class="btn btn-danger" (click)="onSubscribe()">Subscribe</button>

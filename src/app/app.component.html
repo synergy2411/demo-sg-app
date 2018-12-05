@@ -7,21 +7,25 @@
 </div>
 
 <div class="container">
+  <!-- <app-observable-demo></app-observable-demo> -->
+</div>
+
+<div class="container">
   <!-- <app-pipe-demo></app-pipe-demo> -->
 </div>
 
 <div class="container">
-  <!-- <app-register></app-register> -->
+  <app-register></app-register>
 </div>
 
 <div class="container">
-  <!-- <app-login></app-login> -->
+  <app-login></app-login>
 </div>
 
 <div class="container">
   <!-- <app-life-cycle-demo [title]="title"></app-life-cycle-demo> -->
 </div>
 
-<div>
+<div class="container" *ngIf="authService.getToken()!=null">
   <app-users></app-users>
 </div>

@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,7 @@ import { PipeDemoComponent } from './pipe-demo/pipe-demo.component';
 import { CountryCodePipe } from './pipes/countrycode.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { DataService } from './services/data.service';
+import { ObservableDemoComponent } from './observable-demo/observable-demo.component';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { DataService } from './services/data.service';
     RegisterComponent,
     PipeDemoComponent,
     CountryCodePipe,
-    FilterPipe
+    FilterPipe,
+    ObservableDemoComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { DataService } from './services/data.service';
     HttpModule,
     HttpClientModule
   ],
-  providers: [DataService],
+  providers: [DataService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

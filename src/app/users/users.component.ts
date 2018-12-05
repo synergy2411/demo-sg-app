@@ -27,7 +27,10 @@ export class UsersComponent implements OnInit {
         // this.dataService.getHttpUserData()
         //     .subscribe(data=> this.users = data);
         this.dataService.getHttpClientUserData()
-            .subscribe(data => this.users = data);
+            .subscribe(
+                data => {console.log(data);this.users = data},
+                err=>console.log(err),
+                ()=>{console.log("COMPLETED!")});
     }
 
     onIncrease() {

@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -34,7 +35,8 @@ export class RegisterComponent implements OnInit {
     return hasExclamation ? null : { needExclamation: true };
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private authService : AuthService) {
     this.registerForm = this.fb.group({
       username: this.username,
       password: this.password,
@@ -44,6 +46,10 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.registerForm);
+    this.authService.register(
+        this.registerForm.value.username,
+        this.registerForm.value.password 
+        )
   }
 
   ngOnInit() {

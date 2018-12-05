@@ -25,5 +25,9 @@
     </div>
   </div>
   <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login" [disabled]="!f.valid">
+  <input type="button" 
+    class="btn btn-danger btn-block" 
+    value="Get User data" 
+    (click)="getUserData()">
   <p>Form State : {{ f.valid }}</p>
 </form>

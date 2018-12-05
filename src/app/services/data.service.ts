@@ -1,8 +1,9 @@
+import { AuthService } from './auth.service';
 import { IUser } from './../model/user';
 import { USER_DATA } from './../data/mocks';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 // import { map } from 'rxjs/operators'
@@ -11,7 +12,8 @@ import 'rxjs/add/operator/map';
 export class DataService{
 
     constructor(private http : Http,
-                private httpClient : HttpClient){}
+                private httpClient : HttpClient,
+                private authService: AuthService){}
     counter : number = 0;
 
     getUserData(){
@@ -22,8 +24,13 @@ export class DataService{
             .map(response=><IUser[]>response.json().userdata)
     }
     getHttpClientUserData(){
-        return this.httpClient.get("assets/user-data.json")
-            .map(response=><IUser[]>response['userdata'])
+        return this.httpClient.get("https://fir-sg-app.firebaseio.com/userdata.json",{
+            params : new HttpParams().set("auth", this.authService.getToken())
+        }).map(response=><IUser[]>response)
+        // }).map(function(response){return <IUser[]>response})
+
+        // return this.httpClient.get("https://fir-sg-app.firebaseio.com/userdata.json?auth="+this.authService.getToken())
+        //     .map(response=><IUser[]>response)
     }
     
     // getHttp2UserData(){
@@ -32,3 +39,5 @@ export class DataService{
     // }
 
 }
+
+
