@@ -1,7 +1,8 @@
+import { DataService } from './../services/data.service';
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { IUser } from '../model/user';
-import { USER_DATA } from '../data/mocks';
- 
+// import { USER_DATA } from '../data/mocks';
+
 @Component({
     selector: 'app-users',
     // template : `<h1>Users Component Loaded Successfully!</h1>`,
@@ -18,16 +19,22 @@ export class UsersComponent implements OnInit {
 
     users: IUser[];
 
-    constructor(){
-        // this.user = USER_DATA;
+    constructor(public dataService: DataService) { }
+
+    ngOnInit() {
+        // this.users = USER_DATA;
+        // this.users = this.dataService.getUserData();
+        // this.dataService.getHttpUserData()
+        //     .subscribe(data=> this.users = data);
+        this.dataService.getHttpClientUserData()
+            .subscribe(data => this.users = data);
     }
 
-    ngOnInit(){
-        this.users = USER_DATA;
+    onIncrease() {
+        this.dataService.counter++;
     }
 
     moreInfo(user: IUser) {
-        // console.log(user);
         alert(`Hi! Mr. ${user.firstName} is working with ${user.company}!`);
     }
 }

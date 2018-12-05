@@ -1,18 +1,22 @@
-
-
-
 <div class="container">
-  
-  <select [(ngModel)]="filterStatus" class="form-control">
-    <option value="done">Completed Tasks</option>
-    <option value="pending">Pending Tasks</option>
-  </select>
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <select [(ngModel)]="filterStatus" class="form-control">
+        <option value="done">Completed Tasks</option>
+        <option value="pending">Pending Tasks</option>
+      </select>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      <button class="btn btn-block btn-success" (click)="addNewTodo()">
+        Add New Todo Item
+      </button>
+    </div>
+  </div>
 
-    <!-- <input type="text" [(ngModel)]="filterStatus"> -->
-    
+  <hr>
+  <!-- <input type="text" [(ngModel)]="filterStatus"> -->
   <ul class="list-group">
-    <li class="list-group-item" 
-      *ngFor="let todo of todos | filter : filterStatus : 'status'">
+    <li class="list-group-item" *ngFor="let todo of todos | filter : filterStatus : 'status'">
       {{ todo.label }}
       <span class="badge">{{ todo.status }}</span>
     </li>

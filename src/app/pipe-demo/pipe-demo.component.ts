@@ -8,7 +8,14 @@ import { Component } from '@angular/core';
 export class PipeDemoComponent  {
 
   filterStatus = "";
-  
+
+  addNewTodo(){
+    this.todos.push({
+      label : "New Work", 
+      status : "pending"
+    });
+  }
+
   todos = [{
     label : "Some Work",
     status : "done"

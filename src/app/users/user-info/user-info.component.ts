@@ -1,12 +1,20 @@
+import { DataService } from './../../services/data.service';
 import { IUser } from './../../model/user';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
-  styleUrls: ['./user-info.component.css']
+  styleUrls: ['./user-info.component.css'],
+  providers : [ DataService ]
 })
 export class UserInfoComponent {
+
+  constructor(public dataService : DataService){}
+
+  onIncrease(){
+    this.dataService.counter++;
+  }
 
   @Input('user')
   user: IUser;

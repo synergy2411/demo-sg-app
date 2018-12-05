@@ -2,6 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UserImageComponent } from './users/user-image/user-image.component';
@@ -15,13 +17,15 @@ import { RegisterComponent } from './auth/register/register.component';
 import { PipeDemoComponent } from './pipe-demo/pipe-demo.component';
 import { CountryCodePipe } from './pipes/countrycode.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { DataService } from './services/data.service';
+
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    UsersComponent, 
-    UserImageComponent, 
-    UserInfoComponent, 
+    AppComponent,
+    UsersComponent,
+    UserImageComponent,
+    UserInfoComponent,
     LifeCycleDemoComponent,
     HighlightDirective,
     UnlessDirective,
@@ -34,9 +38,11 @@ import { FilterPipe } from './pipes/filter.pipe';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

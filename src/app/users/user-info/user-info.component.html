@@ -4,6 +4,9 @@
 
 <ng-content></ng-content> -->
 
+<h4>Counter in User-Info Comp : {{ dataService.counter }}</h4>
+<button class="btn btn-sm btn-default" (click)="onIncrease()">Increase</button>
+
 
 <h2 app-highlight [defaultColor]="'yellow'"> 
   {{ user.firstName | uppercase }} {{ user.lastName | uppercase }}
