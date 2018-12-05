@@ -1,0 +1,28 @@
+
+
+
+<div class="container">
+  
+  <select [(ngModel)]="filterStatus" class="form-control">
+    <option value="done">Completed Tasks</option>
+    <option value="pending">Pending Tasks</option>
+  </select>
+
+    <!-- <input type="text" [(ngModel)]="filterStatus"> -->
+    
+  <ul class="list-group">
+    <li class="list-group-item" 
+      *ngFor="let todo of todos | filter : filterStatus : 'status'">
+      {{ todo.label }}
+      <span class="badge">{{ todo.status }}</span>
+    </li>
+  </ul>
+</div>
+
+
+<h2>
+  Data : {{ asyncData | async | uppercase }}
+</h2>
+<h3>
+  Contact Number : {{ contact_no | countrycode : 'US' }}
+</h3>

@@ -1,6 +1,7 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserImageComponent } from './users/user-image/user-image.component';
@@ -10,6 +11,10 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { UsersComponent } from './users/users.component';
 import { UnlessDirective } from './directives/unless.directive';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { PipeDemoComponent } from './pipe-demo/pipe-demo.component';
+import { CountryCodePipe } from './pipes/countrycode.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,11 +25,16 @@ import { LoginComponent } from './auth/login/login.component';
     LifeCycleDemoComponent,
     HighlightDirective,
     UnlessDirective,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    PipeDemoComponent,
+    CountryCodePipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

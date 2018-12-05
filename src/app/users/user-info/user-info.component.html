@@ -4,14 +4,17 @@
 
 <ng-content></ng-content> -->
 
-<h2 app-highlight [defaultColor]="'yellow'"> {{ user.firstName }} {{ user.lastName }}</h2>
+
+<h2 app-highlight [defaultColor]="'yellow'"> 
+  {{ user.firstName | uppercase }} {{ user.lastName | uppercase }}
+</h2>
 
 <!-- <p *ngIf="user.isWorking; else ElseTemplate">
   Income : <span [innerHTML]="user.income"></span>
 </p> -->
 
 <p *appUnless="!user.isWorking"> 
-  Income : <span [innerHTML]="user.income"></span> 
+  Income : <span [innerHTML]="user.income | currency : 'CAD'"></span> 
 </p>
 
 <!-- 
@@ -31,7 +34,7 @@
 <!-- <p [ngClass]="['border', 'feature']">Date of Birth : {{ user.dob }}</p> -->
 <!-- <p [ngClass]="{'border' : false, 'feature' : true}">Date of Birth : {{ user.dob }}</p> -->
 <p [ngStyle]="dynamicStyle" 
-  [ngClass]="dynamicClass">Date of Birth : {{ user.dob }}</p>
+  [ngClass]="dynamicClass">Date of Birth : {{ user.dob | date : 'MM-dd-yyyy'}}</p>
 
 <button class="btn btn-default btn-sm" (click)="toggle()">Toggle</button>
 
