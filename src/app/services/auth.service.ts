@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
-import { Conditional } from '@angular/compiler';
 
 @Injectable()
 export class AuthService {
@@ -10,7 +10,6 @@ export class AuthService {
   register(email: string, password : string){
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(response=>{
-        console.log(response);
         console.log("User registered successfully!");
       })
       .catch(err=>console.log(err))
@@ -19,10 +18,9 @@ export class AuthService {
   login(email : string, password: string){
     firebase.auth().signInWithEmailAndPassword(email,password)
       .then(response=>{
-        console.log("Successfully logged in!");
         firebase.auth().currentUser.getIdToken()
           .then(token=>{
-            console.log(token);
+            this.router.navigate(['/users']);
             this.token = token;
           }).catch(err=>console.log(err))
       }).catch(err=>console.log(err));
@@ -31,6 +29,19 @@ export class AuthService {
   getToken(){
     return this.token;
   }
-  constructor() { }
+
+  isAuthenticated(){
+    return this.token != null;
+  }
+
+  logout(){
+    firebase.auth().signOut()
+      .then(res=>{
+        this.router.navigate(['/login']);
+        this.token = null;
+      }).catch(err=>console.log(err));
+  }
+  
+  constructor(private router : Router) { }
 
 }

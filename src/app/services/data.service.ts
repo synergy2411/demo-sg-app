@@ -24,10 +24,15 @@ export class DataService{
             .map(response=><IUser[]>response.json().userdata)
     }
     getHttpClientUserData(){
-        return this.httpClient.get("https://fir-sg-app.firebaseio.com/userdata.json",{
-            params : new HttpParams().set("auth", this.authService.getToken())
-        }).map(response=><IUser[]>response)
-        // }).map(function(response){return <IUser[]>response})
+
+        return this.httpClient.get("https://fir-sg-app.firebaseio.com/userdata.json")
+            .map(response=><IUser[]>response)
+
+
+        // return this.httpClient.get("https://fir-sg-app.firebaseio.com/userdata.json",{
+        //     params : new HttpParams().set("auth", this.authService.getToken())
+        // }).map(response=><IUser[]>response)
+
 
         // return this.httpClient.get("https://fir-sg-app.firebaseio.com/userdata.json?auth="+this.authService.getToken())
         //     .map(response=><IUser[]>response)

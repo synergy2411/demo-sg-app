@@ -1,10 +1,11 @@
-import { AuthService } from './services/auth.service';
+import { LoginGaurdService } from './services/login-gaurd.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { UserImageComponent } from './users/user-image/user-image.component';
@@ -20,6 +21,13 @@ import { CountryCodePipe } from './pipes/countrycode.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { DataService } from './services/data.service';
 import { ObservableDemoComponent } from './observable-demo/observable-demo.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { AuthService } from './services/auth.service';
+import { LoggerInterceptorService } from './services/logger-interceptor.service';
+import { APP_ROUTES } from './app.routes';
+import { ProductComponent } from './product/product.component';
+import { OverviewComponent } from './product/overview/overview.component';
+import { SpecificationComponent } from './product/specification/specification.component';
 
 
 @NgModule({
@@ -36,16 +44,31 @@ import { ObservableDemoComponent } from './observable-demo/observable-demo.compo
     PipeDemoComponent,
     CountryCodePipe,
     FilterPipe,
-    ObservableDemoComponent
+    ObservableDemoComponent,
+    ProductComponent,
+    OverviewComponent,
+    SpecificationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [DataService, AuthService],
+  providers: [DataService, AuthService, LoginGaurdService,
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass : AuthInterceptorService,
+      multi : true
+    },
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass : LoggerInterceptorService,
+      multi : true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
